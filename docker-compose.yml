@@ -1,0 +1,8 @@
+version: '3'
+services:
+  pokeapi:
+    build:
+      context: .
+    container_name: pokeapi_next
+    ports:
+      - "3000:3000"
