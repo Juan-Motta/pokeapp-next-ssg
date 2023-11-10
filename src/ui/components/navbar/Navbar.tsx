@@ -1,6 +1,6 @@
 import { KeyboardEvent, useRef } from 'react';
 
-import ThemeButton from './ThemeIcon';
+import ThemeButton from './ThemeButton';
 import SearchInput from './SearchInput';
 import NavbarTitle from './NavbarTitle';
 
@@ -17,8 +17,8 @@ export default function Navbar() {
         <>
             <nav className="flex mt-8 mb-8 flex-col sm:flex-row">
                 <NavbarTitle />
-                <SearchInput />
                 <ThemeButton />
+                <SearchInput />
             </nav>
             <hr className="dark:border-gray-600 sm:mx-0 mx-10" />
         </>
