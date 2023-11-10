@@ -1,6 +1,10 @@
+import { GetStaticProps } from 'next';
+import { appWithTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import MainLayout from '@/ui/layouts/MainLayout';
 
-export default function Home() {
+function Home() {
     return (
         <MainLayout
             title="Pokeapp"
@@ -10,3 +14,17 @@ export default function Home() {
         </MainLayout>
     );
 }
+
+interface StaticProps extends GetStaticProps {
+    locale: string;
+}
+
+export async function getStaticProps({ locale }: StaticProps) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['common'])),
+        },
+    };
+}
+
+export default appWithTranslation(Home);
