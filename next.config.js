@@ -2,6 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
+  i18n: {
+    locales: ['es', 'en'],
+    defaultLocale: 'es',
+  }
 }
 
 module.exports = nextConfig
