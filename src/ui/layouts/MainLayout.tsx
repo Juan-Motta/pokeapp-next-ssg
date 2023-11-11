@@ -33,13 +33,13 @@ export default function MainLayout({
                     content={`${title}, pokemon, pokedex, pokeapp, pokeapi`}
                 />
             </Head>
-            <div className="container mx-auto overflow-hidden">
+            <div className="container mx-auto overflow-hidden px-5">
                 <Navbar />
-                <main className="flex flex-col sm:flex-row sm:gap-14 sm:mt-10 mt-7 mx-10 sm:mx-0">
-                    <div className="w-100 sm:w-[30%] md:w-[25%]">
+                <main className="flex flex-col md:flex-row md:gap-14 md:mt-10 mt-7 mx-5 md:mx-0">
+                    <div className="w-100 md:w-[30%] lg:w-[25%]">
                         <Sidebar />
                     </div>
-                    <div className="w-100 sm:w-[70%] md:w-[75%]">
+                    <div className="w-100 md:w-[70%] lg:w-[75%]">
                         <PokemonList />
                     </div>
                 </main>
