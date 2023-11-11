@@ -35,7 +35,7 @@ export default function MainLayout({
             </Head>
             <div className="container mx-auto overflow-hidden px-5">
                 <Navbar />
-                <main className="flex flex-col md:flex-row md:gap-14 md:mt-10 mt-7 mx-5 md:mx-0">
+                <main className="flex flex-col md:flex-row md:gap-10 md:mt-10 mt-7 mx-5 md:mx-0">
                     <div className="w-100 md:w-[30%] lg:w-[25%]">
                         <Sidebar />
                     </div>

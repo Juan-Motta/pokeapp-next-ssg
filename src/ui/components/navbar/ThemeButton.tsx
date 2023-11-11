@@ -8,8 +8,6 @@ export default function ThemeButton() {
     const { theme, setTheme, resolvedTheme } = useTheme();
     const divRef = useRef<HTMLDivElement>(null);
 
-    console.log(resolvedTheme);
-
     function toggleTheme() {
         if (!divRef.current) return;
         if (theme === 'dark') {

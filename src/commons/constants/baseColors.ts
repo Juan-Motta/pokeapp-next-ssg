@@ -1,4 +1,18 @@
-export const BASE_COLORS = {
+interface BaseColors {
+    [key: string]: string;
+    purple: string;
+    brown: string;
+    red: string;
+    blue: string;
+    green: string;
+    yellow: string;
+    white: string;
+    pink: string;
+    gray: string;
+    black: string;
+}
+
+export const BASE_COLORS: BaseColors = {
     purple: '#A18EC1',
     brown: '#987F72',
     red: '#EC807E',

@@ -7,3 +7,16 @@
         @apply dark:bg-gray-900 bg-white transition-colors duration-100 ease-in-out text-gray-700 dark:text-white
     }
 }
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spin 10s linear infinite;
+}
