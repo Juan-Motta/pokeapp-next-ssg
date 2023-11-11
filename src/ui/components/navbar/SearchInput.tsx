@@ -1,11 +1,11 @@
 import { KeyboardEvent, useRef } from 'react';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 import SearchIcon from '@/ui/icons/SearchIcon';
 
 export default function SearchInput() {
     const inputRef = useRef<HTMLInputElement>(null);
-    const { t: translate } = useTranslation('common');
+    const { t } = useTranslation('common');
 
     function onChangeInput(e: KeyboardEvent<HTMLInputElement>) {
         e.preventDefault();
@@ -18,7 +18,7 @@ export default function SearchInput() {
             <input
                 type="text"
                 className="w-full px-3 py-1 pl-10 text-lg border-2 border-none rounded-lg bg-neutral-200"
-                placeholder={translate('Insert a name or id')}
+                placeholder={t('Insert a name or id')}
                 onKeyUp={onChangeInput}
                 ref={inputRef}
             />

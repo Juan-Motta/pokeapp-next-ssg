@@ -18,5 +18,4 @@ export const BASE_TYPE_COLORS = {
     dark: '#8E817B',
     fairy: '#E2B1C3',
     unknown: '#C4C4C4',
-    shadow: '#4A4A4A',
 };

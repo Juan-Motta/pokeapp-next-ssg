@@ -48,7 +48,7 @@ export default function LanguageButton() {
                 className="px-1 w-[4rem] h-[2.125rem] rounded-full dark:bg-white bg-neutral-200 flex shrink-0 items-center transition duration-100 focus:outline-none shadow"
             >
                 <div
-                    className={`text-sm font-bold flex justify-center items-center dark:bg-gray-700 w-[1.75rem] h-7 relative rounded-full transition duration-300 transform bg-yellow-500 ${setInitialStyles()}`}
+                    className={`select-none text-sm font-bold flex justify-center items-center dark:bg-gray-700 w-[1.75rem] h-7 relative rounded-full transition duration-300 transform bg-yellow-500 ${setInitialStyles()}`}
                     ref={divRef}
                 >
                     {locale === 'es' ? <span>ES</span> : <span>EN</span>}

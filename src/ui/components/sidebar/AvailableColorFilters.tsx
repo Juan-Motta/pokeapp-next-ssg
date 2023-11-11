@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useTranslation from 'next-translate/useTranslation';
 
 import { BASE_COLORS } from '../../../commons/constants/baseColors';
 import { useFilterStore } from '../../../commons/stores/filterStore';
@@ -12,6 +13,7 @@ export default function AvailableColorFilters() {
     const [availableColorFilters, setAvailableColorFilters] = useState([
         ...Object.keys(BASE_COLORS),
     ]);
+    const { t } = useTranslation('common');
 
     useFilterStore.setState({
         availableColorFilters,
@@ -21,11 +23,13 @@ export default function AvailableColorFilters() {
     return (
         <div>
             <h1 className="text-xl font-bold mt-5 mb-2 text-gray-700 dark:text-white">
-                Color filters
+                {t('Color filters')}
             </h1>
             <div className="flex flex-wrap gap-2">
                 {availableColorFilters.length === 0 ? (
-                    <div className="text-neutral-400">No filters left</div>
+                    <div className="text-neutral-400">
+                        {t('No filters left')}
+                    </div>
                 ) : (
                     useFilterStore
                         .getState()

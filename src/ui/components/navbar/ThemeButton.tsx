@@ -5,8 +5,10 @@ import DarkIcon from '../../icons/DarkIcon';
 import LightIcon from '../../icons/LightIcon';
 
 export default function ThemeButton() {
-    const { theme, setTheme } = useTheme();
+    const { theme, setTheme, resolvedTheme } = useTheme();
     const divRef = useRef<HTMLDivElement>(null);
+
+    console.log(resolvedTheme);
 
     function toggleTheme() {
         if (!divRef.current) return;

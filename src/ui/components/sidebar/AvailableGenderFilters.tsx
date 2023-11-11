@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useTranslation from 'next-translate/useTranslation';
 
 import { BASE_GENDER_COLORS } from '../../../commons/constants/baseGenderColors';
 import { useFilterStore } from '../../../commons/stores/filterStore';
@@ -12,6 +13,7 @@ export default function AvailableGenderFilters() {
     const [availableGenderFilters, setAvailableGenderFilters] = useState([
         ...Object.keys(BASE_GENDER_COLORS),
     ]);
+    const { t } = useTranslation('common');
 
     useFilterStore.setState({
         availableGenderFilters,
@@ -21,11 +23,13 @@ export default function AvailableGenderFilters() {
     return (
         <div>
             <h1 className="text-xl font-bold mt-5 mb-2 text-gray-700 dark:text-white">
-                Type filters
+                {t('Gender filters')}
             </h1>
             <div className="flex flex-wrap gap-2">
                 {availableGenderFilters.length === 0 ? (
-                    <div className="text-neutral-400">No filters left</div>
+                    <div className="text-neutral-400">
+                        {t('No filters left')}
+                    </div>
                 ) : (
                     useFilterStore
                         .getState()

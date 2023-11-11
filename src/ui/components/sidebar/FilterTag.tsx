@@ -1,3 +1,5 @@
+import useTranslation from 'next-translate/useTranslation';
+
 interface Props {
     name: string;
     color: string;
@@ -6,6 +8,7 @@ interface Props {
 }
 
 export default function FilterTag({ name, color, onClick, children }: Props) {
+    const { t } = useTranslation('common');
     return (
         <div
             className="px-3 py-[2px] rounded-md flex justify-start items-center cursor-pointer hover:brightness-[80%]"
@@ -14,7 +17,9 @@ export default function FilterTag({ name, color, onClick, children }: Props) {
                 onClick && onClick(name, color);
             }}
         >
-            <span className="text-white font-bold capitalize mr-2">{name}</span>
+            <span className="text-white font-bold capitalize mr-2 select-none">
+                {t(name)}
+            </span>
             {children}
         </div>
     );

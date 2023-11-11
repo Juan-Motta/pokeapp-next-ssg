@@ -30,7 +30,11 @@ export default function ThemeProvider({ children }: Props): React.ReactNode {
     return !mounted ? (
         <>{children}</>
     ) : (
-        <NextThemeProvider enableSystem={true} attribute="class">
+        <NextThemeProvider
+            enableSystem={true}
+            attribute="class"
+            defaultTheme="system"
+        >
             {children}
         </NextThemeProvider>
     );
