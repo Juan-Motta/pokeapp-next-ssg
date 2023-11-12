@@ -1,9 +1,9 @@
 import { create } from 'zustand';
 
-import { Pokemon } from '../interfaces/pokemons';
+import { PokemonBase } from '../interfaces/pokemonApp';
 
 interface pokemonState {
-    pokemons: Pokemon[];
+    pokemons: PokemonBase[];
 }
 
 const usePokemonStore = create<pokemonState>()(set => ({

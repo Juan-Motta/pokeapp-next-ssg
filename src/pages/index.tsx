@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next';
 
 import MainLayout from '@/ui/layouts/MainLayout';
 import { getAllPokemons } from '@/services/pokemons/getAllPOkemons';
-import { Pokemon } from '@/commons/interfaces/pokemons';
+import { Pokemon } from '@/commons/interfaces/pokemonApi';
 import { addPokemons } from '@/services/pokemons/addPokemons';
 import { usePokemonStore } from '@/commons/stores/pokemonStore';
 
@@ -26,7 +26,7 @@ interface StaticProps extends GetStaticProps {}
 
 export async function getStaticProps({}: StaticProps) {
     // 1009 is the last pokemon defined with image in the api
-    const { pokemons } = await getAllPokemons({ limit: 1009 });
+    const pokemons = await getAllPokemons({ limit: 1009 });
     return {
         props: {
             pokemons,

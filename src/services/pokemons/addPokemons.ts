@@ -1,7 +1,7 @@
-import { Pokemon } from '@/commons/interfaces/pokemons';
+import { PokemonBase } from '@/commons/interfaces/pokemonApp';
 import { usePokemonStore } from '@/commons/stores/pokemonStore';
 
-function addPokemons(pokemons: Pokemon[]) {
+function addPokemons(pokemons: PokemonBase[]) {
     usePokemonStore.setState({
         pokemons,
     });

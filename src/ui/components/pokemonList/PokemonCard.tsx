@@ -1,17 +1,18 @@
 import { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 
-import { Pokemon } from '@/commons/interfaces/pokemons';
+import { PokemonBase } from '@/commons/interfaces/pokemonApp';
 import PokeballIcon from '@/ui/icons/PokeballIcon';
 import { BASE_COLORS } from '@/commons/constants/baseColors';
 
 interface Props {
-    pokemon: Pokemon;
+    pokemon: PokemonBase;
 }
 
 export default function PokemonCard({ pokemon }: Props) {
     const { t } = useTranslation('common');
-    function formatUrl(): string | undefined {
+    function formatUrl(): string | StaticImageData {
         let url: string | StaticImageData = '';
         if (pokemon.id < 1000) {
             url = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${String(
@@ -26,7 +27,7 @@ export default function PokemonCard({ pokemon }: Props) {
     return (
         <div
             className="relative flex flex-col mb-5 border-2 border-none rounded-xl overflow-hidden"
-            style={{ backgroundColor: BASE_COLORS[pokemon.specy.color.name] }}
+            style={{ backgroundColor: BASE_COLORS[pokemon.color] }}
         >
             <div className="z-10 cursor-pointer">
                 <div className="flex flex-row justify-between px-3 pt-3 ">
@@ -39,20 +40,25 @@ export default function PokemonCard({ pokemon }: Props) {
                 </div>
                 <div className="flex flex-row justify-between px-3 my-3 ">
                     <div className="flex flex-col w-1/2 pt-4 pr-4 h-100">
-                        {pokemon.types.map(({ type }) => (
+                        {pokemon.types.map(type => (
                             <span
-                                key={type.name}
+                                key={type}
                                 className="px-2 py-1 mb-1 text-white rounded-md"
                                 style={{
                                     backgroundColor: '#FFFFFF40',
                                 }}
                             >
-                                {t(type.name)}
+                                {t(type)}
                             </span>
                         ))}
                     </div>
                     <div className="w-1/2 ">
-                        <img src={formatUrl()} alt={pokemon.name} />
+                        <Image
+                            src={formatUrl()}
+                            alt={pokemon.name}
+                            width={150}
+                            height={150}
+                        />
                     </div>
                 </div>
             </div>
