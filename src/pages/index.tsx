@@ -2,12 +2,11 @@ import { GetStaticProps } from 'next';
 
 import MainLayout from '@/ui/layouts/MainLayout';
 import { getAllPokemons } from '@/services/pokemons/getAllPOkemons';
-import { Pokemon } from '@/commons/interfaces/pokemonApi';
+import { PokemonBase } from '@/commons/interfaces/pokemonApp';
 import { addPokemons } from '@/services/pokemons/addPokemons';
-import { usePokemonStore } from '@/commons/stores/pokemonStore';
 
 interface Props {
-    pokemons: Pokemon[];
+    pokemons: PokemonBase[];
 }
 function Home({ pokemons }: Props) {
     addPokemons(pokemons);
