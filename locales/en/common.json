@@ -38,5 +38,10 @@
     "gray": "gray",
     "black": "black",
     "male": "male",
-    "female": "female"
+    "female": "female",
+    "about": "about",
+    "weight": "weight",
+    "height": "height",
+    "abilities": "abilities",
+    "base stats": "base stats"
 }
