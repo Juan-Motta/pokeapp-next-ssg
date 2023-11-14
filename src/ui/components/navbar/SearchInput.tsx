@@ -2,6 +2,7 @@ import { KeyboardEvent, useRef } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import SearchIcon from '@/ui/icons/SearchIcon';
+import { searchPokemon } from '@/services/filters/searchPokemon';
 
 export default function SearchInput() {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -10,6 +11,7 @@ export default function SearchInput() {
     function onChangeInput(e: KeyboardEvent<HTMLInputElement>) {
         e.preventDefault();
         if (e.key !== 'Enter') return;
+        searchPokemon(inputRef.current?.value || '');
         inputRef.current && (inputRef.current.value = '');
     }
 

@@ -3,6 +3,7 @@ import { usePokemonStore } from '@/commons/stores/pokemonStore';
 
 function addPokemons(pokemons: PokemonBase[]) {
     usePokemonStore.setState({
+        originalPokemons: pokemons,
         pokemons,
     });
 }

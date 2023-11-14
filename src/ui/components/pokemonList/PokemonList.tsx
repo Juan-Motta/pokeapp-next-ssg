@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import PokemonCard from './PokemonCard';
 import LoadMorePokemonButton from './LoadMorePokemonButton';
@@ -9,6 +9,8 @@ export default function PokemonList() {
     const [pokemons, setPokemons] = useState(
         usePokemonStore.getState().pokemons.slice(0, 20)
     );
+
+    usePokemonStore.setState({ setPokemons });
 
     function handleLoad(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
@@ -31,7 +33,7 @@ export default function PokemonList() {
                     </li>
                 ))}
             </ul>
-            {pokemons.length < 1009 ? (
+            {pokemons.length < 1009 && pokemons.length >= 20 ? (
                 <LoadMorePokemonButton title="Load more" onClick={handleLoad} />
             ) : (
                 <> </>

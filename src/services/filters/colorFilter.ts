@@ -1,41 +1,47 @@
-import {
-    useFilterStore,
-    selectedFilterType,
-} from '../../commons/stores/filterStore';
+import { useFilterStore } from '../../commons/stores/filterStore';
+
+import { updatePokemonFilters } from './updatePokemons';
 
 function addColorFilter(name: string, color: string) {
-    const selectedFilters = useFilterStore.getState().selectedFilters;
+    // update selected filters
+    const oldSelectedFilters = useFilterStore.getState().selectedFilters;
     const setSelectedFilters = useFilterStore.getState().setSelectedFilters;
-    const availableColorFilters =
+    const newSelectedFilters = [
+        ...oldSelectedFilters,
+        { name, color, typeModule: 'color' },
+    ];
+    setSelectedFilters && setSelectedFilters(newSelectedFilters);
+    // update available filters
+    const oldAvailableColorFilters =
         useFilterStore.getState().availableColorFilters;
     const setAvailableColorFilters =
         useFilterStore.getState().setAvailableColorFilters;
-    setSelectedFilters &&
-        setSelectedFilters([
-            ...selectedFilters,
-            { name, color, typeModule: 'color' },
-        ]);
+    const newAvailableColorFilters = oldAvailableColorFilters.filter(
+        filter => filter !== name
+    );
     setAvailableColorFilters &&
-        setAvailableColorFilters(
-            availableColorFilters.filter(filter => filter !== name)
-        );
+        setAvailableColorFilters(newAvailableColorFilters);
+    updatePokemonFilters(newSelectedFilters);
 }
 
-function removeColorFilter(
-    name: string,
-    selectedFilters: selectedFilterType[],
-    setSelectedFilters: Function | null
-) {
-    const availableColorFilters =
+function removeColorFilter(name: string) {
+    // remove filter from selected filters
+    const setSelectedFilters = useFilterStore.getState().setSelectedFilters;
+    const oldSelectedFilters = useFilterStore.getState().selectedFilters;
+    const newSelectedFilters = oldSelectedFilters.filter(
+        value => value.name !== name
+    );
+    setSelectedFilters && setSelectedFilters(newSelectedFilters);
+    // update available filters
+    const oldAvailableColorFilters =
         useFilterStore.getState().availableColorFilters;
+    const newAvailableColorFilters = [name, ...oldAvailableColorFilters];
     const setAvailableColorFilters =
         useFilterStore.getState().setAvailableColorFilters;
-    setSelectedFilters &&
-        setSelectedFilters(
-            selectedFilters.filter(value => value.name !== name)
-        );
     setAvailableColorFilters &&
-        setAvailableColorFilters([name, ...availableColorFilters]);
+        setAvailableColorFilters(newAvailableColorFilters);
+    // update pokemons
+    updatePokemonFilters(newSelectedFilters);
 }
 
 export { addColorFilter, removeColorFilter };

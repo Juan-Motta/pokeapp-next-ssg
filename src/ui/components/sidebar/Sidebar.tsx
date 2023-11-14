@@ -1,5 +1,4 @@
 import AvailableColorFilters from './AvailableColorFilters';
-import AvailableGenderFilters from './AvailableGenderFilters';
 import AvailableTypeFilters from './AvalaibleTypeFilters';
 import { SelectedFilters } from './SelectedFilters';
 
@@ -14,9 +13,6 @@ export default function Sidebar() {
             </div>
             <div>
                 <AvailableColorFilters />
-            </div>
-            <div>
-                <AvailableGenderFilters />
             </div>
         </>
     );
