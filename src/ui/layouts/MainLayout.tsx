@@ -5,7 +5,7 @@ import { Sidebar } from '../components/sidebar';
 import { PokemonList } from '../components/pokemonList';
 
 interface Props {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     title?: string;
     description?: string;
     keywords?: string;
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export default function MainLayout({
-    children,
+    children = null,
     title,
     description,
     keywords,
@@ -42,6 +42,7 @@ export default function MainLayout({
                     <div className="w-100 md:w-[70%] lg:w-[75%]">
                         <PokemonList />
                     </div>
+                    <div>{children}</div>
                 </main>
             </div>
         </>

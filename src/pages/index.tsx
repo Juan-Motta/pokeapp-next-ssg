@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 
+import { getAllPokemons } from '@/services/pokemons/getAllPokemons';
 import MainLayout from '@/ui/layouts/MainLayout';
-import { getAllPokemons } from '@/services/pokemons/getAllPOkemons';
 import { PokemonBase } from '@/commons/interfaces/pokemonApp';
 import { addPokemons } from '@/services/pokemons/addPokemons';
 
@@ -15,9 +15,7 @@ function Home({ pokemons }: Props) {
         <MainLayout
             title="Pokeapp"
             description="Information about all pokemons"
-        >
-            Hola
-        </MainLayout>
+        ></MainLayout>
     );
 }
 

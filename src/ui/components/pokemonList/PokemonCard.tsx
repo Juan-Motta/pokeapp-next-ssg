@@ -1,6 +1,7 @@
 import { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
 
 import { PokemonBase } from '@/commons/interfaces/pokemonApp';
 import PokeballIcon from '@/ui/icons/PokeballIcon';
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export default function PokemonCard({ pokemon }: Props) {
+    const { push } = useRouter();
     const { t } = useTranslation('common');
     function formatUrl(): string | StaticImageData {
         let url: string | StaticImageData = '';
@@ -24,10 +26,15 @@ export default function PokemonCard({ pokemon }: Props) {
         return url;
     }
 
+    function openModal() {
+        push(`/pokemons/${pokemon.id}`);
+    }
+
     return (
         <div
             className="relative flex flex-col mb-5 border-2 border-none rounded-xl overflow-hidden"
             style={{ backgroundColor: BASE_COLORS[pokemon.color] }}
+            onClick={openModal}
         >
             <div className="z-10 cursor-pointer">
                 <div className="flex flex-row justify-between px-3 pt-3 ">
