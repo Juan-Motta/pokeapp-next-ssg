@@ -40,7 +40,10 @@ async function getDetailedPokemon(args: QueryParams) {
             weight: pokemon.weight,
             abilities: pokemon.abilities.map(({ ability }) => ({
                 name: ability.name,
-                description: ability.effects[0].description,
+                description:
+                    ability.effects.length > 0
+                        ? ability.effects[0].description
+                        : '',
             })),
             stats: pokemon.stats.map(stat => ({
                 name: stat.state.name,
@@ -62,7 +65,10 @@ async function getDetailedPokemon(args: QueryParams) {
             egg_groups: pokemon.specy.egggroups.map(
                 egggroup => egggroup.egggroup.name
             ),
-            description: pokemon.specy.description[0].flavor_text,
+            description:
+                pokemon.specy.description.length > 0
+                    ? pokemon.specy.description[0].flavor_text
+                    : '',
         }));
     if (simplifiedResponse.length > 0) {
         return simplifiedResponse[0];
