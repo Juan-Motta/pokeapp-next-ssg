@@ -26,10 +26,10 @@ function PokemonDetail({ pokemon }: Props) {
 interface StaticPaths extends GetStaticPaths {}
 
 export async function getStaticPaths({}: StaticPaths) {
-    const pokemons = [...Array(1009)].map((value, index) => `${index + 1}`);
+    const pokemons = [...Array(20)].map((value, index) => `${index + 1}`);
     return {
         paths: pokemons.map(id => ({ params: { id } })),
-        fallback: false,
+        fallback: 'blocking',
     };
 }
 
@@ -41,6 +41,14 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
         where_pokemon: { id: { _eq: _id } },
         where_pokemonspeciesflavortexts: { language_id: { _eq: 9 } },
     });
+    if (!pokemon) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        };
+    }
     return {
         props: {
             pokemon,
