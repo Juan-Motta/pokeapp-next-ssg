@@ -12,6 +12,9 @@ interface Props {
     image?: string;
 }
 
+const origin =
+    typeof window !== 'undefined' ? '' : (window as any).location.origin;
+
 export default function MainLayout({
     children = null,
     title,
@@ -31,6 +34,15 @@ export default function MainLayout({
                 <meta
                     name="keywords"
                     content={`${title}, pokemon, pokedex, pokeapp, pokeapi`}
+                />
+                <meta property="og:title" content="Pokeapp" />
+                <meta
+                    property="og:description"
+                    content="Get info about all pokemons from 1st to 9th generation."
+                />
+                <meta
+                    property="og:image"
+                    content={`${origin}/pokemon_mini.webp`}
                 />
             </Head>
             <div className="container mx-auto overflow-hidden px-5">
