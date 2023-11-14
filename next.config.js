@@ -7,4 +7,13 @@ module.exports = nextTranslate({
         domains: ['assets.pokemon.com'],
         formats: ['image/avif', 'image/webp'],
     },
+    redirects: async () => {
+        return [
+            {
+                source: '/pokemons',
+                destination: '/',
+                permanent: true,
+            },
+        ];
+    },
 });
