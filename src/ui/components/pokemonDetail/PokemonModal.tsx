@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import Image, { StaticImageData } from 'next/image';
+import useTranslation from 'next-translate/useTranslation';
 
 import { BASE_COLORS } from '@/commons/constants/baseColors';
 import { PokemonDetailedBase } from '@/commons/interfaces/pokemonApp';
@@ -12,6 +13,7 @@ interface Props {
 }
 export default function PokemonModal({ pokemon }: Props) {
     const { push } = useRouter();
+    const { t } = useTranslation('common');
     function handleoutsideClick() {
         push('/');
     }
@@ -37,7 +39,7 @@ export default function PokemonModal({ pokemon }: Props) {
                 onClick={e => {
                     e.stopPropagation();
                 }}
-                className="z-30 flex flex-col w-1/3 rounded-md"
+                className="z-30 flex flex-col w-100 lg:w-1/2 xl:w-1/3 rounded-md"
                 style={{ backgroundColor: BASE_COLORS[pokemon.color] }}
             >
                 <div className="flex justify-between px-10 pt-8">
@@ -71,21 +73,21 @@ export default function PokemonModal({ pokemon }: Props) {
                                             ],
                                     }}
                                 >
-                                    {type}
+                                    {t(type)}
                                 </span>
                             ))}
                         </div>
                     </div>
                     <div className="flex flex-col my-5">
                         <span
-                            className="mx-auto text-xl font-bold"
+                            className="mx-auto text-xl font-bold capitalize"
                             style={{
                                 color: BASE_COLORS[
                                     pokemon.color as keyof typeof BASE_COLORS
                                 ],
                             }}
                         >
-                            About
+                            {t('about')}
                         </span>
                         <hr className="mx-6 mt-3" />
                     </div>
@@ -102,7 +104,7 @@ export default function PokemonModal({ pokemon }: Props) {
                             </div>
                             <div className="flex mt-1">
                                 <span className="mx-auto text-neutral-500">
-                                    weight
+                                    {t('weight')}
                                 </span>
                             </div>
                         </div>
@@ -114,7 +116,7 @@ export default function PokemonModal({ pokemon }: Props) {
                             </div>
                             <div className="flex mt-1">
                                 <span className="mx-auto text-neutral-500">
-                                    height
+                                    {t('height')}
                                 </span>
                             </div>
                         </div>
@@ -134,21 +136,21 @@ export default function PokemonModal({ pokemon }: Props) {
                             </div>
                             <div className="flex mt-1">
                                 <span className="mx-auto text-neutral-500">
-                                    abilities
+                                    {t('abilities')}
                                 </span>
                             </div>
                         </div>
                     </div>
                     <div className="flex flex-col my-5">
                         <span
-                            className="mx-auto text-xl font-bold"
+                            className="mx-auto text-xl font-bold capitalize"
                             style={{
                                 color: BASE_COLORS[
                                     pokemon.color as keyof typeof BASE_COLORS
                                 ],
                             }}
                         >
-                            Base Stats
+                            {t('base stats')}
                         </span>
                         <hr className="mx-6 mt-3" />
                     </div>

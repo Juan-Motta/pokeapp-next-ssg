@@ -1,6 +1,10 @@
 import { ParsedUrlQuery } from 'querystring';
 
-import { GetStaticPaths, GetStaticPropsContext } from 'next';
+import {
+    GetStaticPaths,
+    GetStaticPathsContext,
+    GetStaticPropsContext,
+} from 'next';
 
 import MainLayout from '@/ui/layouts/MainLayout';
 import { addPokemons } from '@/services/pokemons/addPokemons';
@@ -23,9 +27,7 @@ function PokemonDetail({ pokemon }: Props) {
     );
 }
 
-interface StaticPaths extends GetStaticPaths {}
-
-export async function getStaticPaths({}: StaticPaths) {
+export async function getStaticPaths(props: GetStaticPathsContext) {
     const pokemons = [...Array(20)].map((value, index) => `${index + 1}`);
     return {
         paths: pokemons.map(id => ({ params: { id } })),
@@ -33,13 +35,15 @@ export async function getStaticPaths({}: StaticPaths) {
     };
 }
 
-export async function getStaticProps({ params }: GetStaticPropsContext) {
-    const _id = parseInt((params as ParsedUrlQuery).id as string);
+export async function getStaticProps(props: GetStaticPropsContext) {
+    const _id = parseInt((props.params as ParsedUrlQuery).id as string);
+    const _lang = props.locale === 'en' ? 9 : 7;
+
     const pokemon = await getDetailedPokemon({
         limit: 1,
         offset: 0,
         where_pokemon: { id: { _eq: _id } },
-        where_pokemonspeciesflavortexts: { language_id: { _eq: 9 } },
+        where_pokemonspeciesflavortexts: { language_id: { _eq: _lang } },
     });
     if (!pokemon) {
         return {
