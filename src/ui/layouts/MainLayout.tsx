@@ -13,7 +13,7 @@ interface Props {
 }
 
 const origin =
-    typeof window !== 'undefined' ? '' : (window as any).location.origin;
+    typeof window === 'undefined' ? '' : (window as any).location.origin;
 
 export default function MainLayout({
     children = null,
