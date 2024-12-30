@@ -2,6 +2,8 @@
 
 Pokeapp created with create-next-app using SSG and using NextJS, Tailwind and Framer Motion
 
+![image](https://github.com/user-attachments/assets/22b20930-fd76-46dd-9c03-42016161443a)
+
 ## Requirements
 * Node 20
 
